@@ -1,6 +1,4 @@
-In this assignment you will use your JavaScript and D3 skills to create standalone data-driven visualization with event handling. All of the elements below have been covered in our hands on practical session on D3.
-
-Assignment
+## Assignment
 
 Assume you were contacted by the Royal Dutch Meteorological Institute (KNMI). They have a dataset of daily temperature measurements on the Schiphol Airport in the period (2011 - 2015) and they want to visualize the average monthly temperatures of each year in a bar chart. They have provided the dataset (meteo.csvPreview the document), your task is to provide this visualization.
 

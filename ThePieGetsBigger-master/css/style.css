@@ -1,0 +1,53 @@
+h1, h2{
+    text-align: center;
+}
+
+#chart-area svg {
+    margin:auto;
+    display:inherit;
+}
+
+@media screen and (min-width: 768px) {
+    table {
+        margin-top:75px;
+    }
+}
+
+.circle {
+    fill: none;
+    opacity: 1;
+}
+
+.arc {
+    stroke: "white";
+    stroke-width: 2px;
+}
+
+.money-cell {
+    text-align: right;
+}
+
+#leg1 { background-color: #66c2a5; }
+#leg2 { background-color: #fc8d62; }
+#leg3 { background-color: #8da0cb; }
+#leg4 { background-color: #e78ac3; }
+#leg5 { background-color: #a6d854; }
+#avLeg { background-color: grey; }
+
+#page-main {
+    margin-top: 10px;
+}
+
+#controls {
+    margin-bottom: 20px;
+}
+
+#play-button {
+    margin-top: 10px;
+    width: 100px;
+}
+
+#slider-div {
+    width:300px;
+    float:right;
+}
