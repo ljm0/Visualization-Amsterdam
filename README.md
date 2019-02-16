@@ -6,7 +6,7 @@ A complete solution contains the following elements:
 
 1. Written completely in D3
 
-2. Loads and uses the weather data from the provided CSV file
+? 2. Loads and uses the weather data from the provided CSV file
 
 3. Each year represented by 12 bars for each month with each bar's size corresponding to the average temperature in said month
 
@@ -16,7 +16,7 @@ A complete solution contains the following elements:
 
 6. The size of each bar is computed dynamically using D3 scale
 
-7. Dynamically computed y-axis on the left-hand side
+? 7. Dynamically computed y-axis on the left-hand side
 
 8. A label showing the current year 9. The user can navigate through years by pressing the left arrow (previous year) or right arrow (next year); pressing an arrow toggles update of the year label and recomputing of the bars and axes.
 

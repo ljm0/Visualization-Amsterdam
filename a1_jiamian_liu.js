@@ -1,12 +1,5 @@
-// var p = d3.select("body")
-//     .selectAll("p")
-//     .text("hello");
-
-// p.style("color", "red")
-//     .style("font-size", "72px");
-
 var width = 1000;
-var height = 500;
+var height = 800;
 // creat svg
 var svgContainer = d3.select("body")
                      .append("svg")
@@ -16,40 +9,14 @@ var svgContainer = d3.select("body")
 var chart_height =400;
 var chart_width =700;
 
-// //画布周边的空白
-// var padding = {
-//     left: 30,
-//     right: 30,
-//     top: 20,
-//     bottom: 20
-// };
-
 // x and y scale
 var x = d3.scaleBand().rangeRound([0,chart_width]).padding(0.1),
     y = d3.scaleLinear().rangeRound([chart_height,0]);
 
-// //x轴的比例尺
-// var xScale = d3.scale.ordinal()
-//     .domain(d3.range(dataset.length))
-//     .rangeRoundBands([0, width - padding.left - padding.right]);
-// //y轴的比例尺
-// var yScale = d3.scale.linear()
-//     .domain([0, d3.max(dataset)])
-//     .range([height - padding.top - padding.bottom, 0]);
-// //定义x轴
-// var xAxis = d3.svg.axis()
-//     .scale(xScale)
-//     .orient("bottom");
-// //定义y轴
-// var yAxis = d3.svg.axis()
-//     .scale(yScale)
-//     .orient("left");
 
-//x y axis 
-//FIXME different
 var chart_group = svgContainer.append("g")
                               .attr("id", "chart_group")
-                              .attr("transform", "translate(" + 10 + "," + 50 + ")");
+                              .attr("transform", "translate(" + 200 + "," + 50 + ")");
 
 d3.csv("newmeteo.csv", function (d) {
         return {
@@ -62,26 +29,28 @@ d3.csv("newmeteo.csv", function (d) {
         }
     })
     .then(function (data) {
-        var stadsdelen = [];
+        // console.log(data);
+        var mymonth = [];
         for (var i = 0; i < data.length; i++) {
-            stadsdelen.push(data[i].mymonth);
+            mymonth.push(data[i].mymonth);
         };
 
-        x.domain(stadsdelen);
-
+        x.domain(mymonth);
         chart_group.append("g")
             .attr("transform", "translate(" + 0 + "," + chart_height + ")")
             .call(d3.axisBottom(x));
 
         var maxValue = d3.max(data, function (d) {
-            return Math.max(d["2011"], d["2012"], d["2013"], d["2014"], d["2015"]);
+            // return Math.max(d["2011"], d["2012"], d["2013"], d["2014"], d["2015"]);
+            return Math.max(d["2011"]);
         });
 
+        yaxis = d3.axisLeft(y);
         y.domain([0, maxValue]);
 
         chart_group.append("g")
-            .call(d3.axisLeft(y));
-
+                   .attr("class", "axisy").call(yaxis);
+        // chart_group.selectAll("axisy").call(yaxis);
 
         chart_group.selectAll(".bar")
             .data(data)
@@ -100,6 +69,28 @@ d3.csv("newmeteo.csv", function (d) {
             });
 
         var year = 2011;
+
+
+        chart_group.selectAll(".bartext")
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("class", "bartext")
+            .attr("x", function (d) {
+                return x(d.mymonth);
+            })
+            .attr("y", function (d) {
+                return y(d["2011"]);
+            })
+		    .attr("dx", function (d) {
+                // return ((x(d.mymonth)) / 2);
+                return 20;
+		    })
+		    .attr("dy", function (d) {
+		        return -15;
+		    }).text(function (d) {
+		        return d['2011'];
+		    });
 
         chart_group.append("text")
             .attr("class", "title")
@@ -124,6 +115,23 @@ d3.csv("newmeteo.csv", function (d) {
 
                     chart_group.select(".title")
                         .text("average monthly temperatures of " + String(year));
+                    chart_group.selectAll(".bartext")
+                            .attr("y", function (d) {
+                                return y(d[String(year)]);
+                            })
+                        .text(function (d) {
+                            return d[String(year)];
+                        });
+                    
+                    var maxValue = d3.max(data, function (d) {
+                        return Math.max(d[String(year)]);
+                    });
+                    y.domain([0, maxValue]);
+                    // chart_group.select("axis-y").remove();
+                    chart_group.selectAll("axis-y")
+                                // .append("g")
+                                // .select("axis-y")
+                                .call(d3.axisLeft(y));
                 }
             });
 
@@ -146,6 +154,14 @@ d3.csv("newmeteo.csv", function (d) {
 
                 chart_group.select(".title")
                     .text(" average monthly temperatures of " + String(year));
+                chart_group.selectAll(".bartext")
+                            .attr("y", function (d) {
+                                return y(d[String(year)]);
+                            })
+                        .text(function (d) {
+                            return d[String(year)];
+                        });
+
             });
 
 
