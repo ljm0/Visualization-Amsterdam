@@ -1,6 +1,5 @@
 ## Assignment 1 
 - Name: Jiamian Liu 
-- Student Number:2632301
 
 ## run
 - Use the command "python -m http.server" in your folder
