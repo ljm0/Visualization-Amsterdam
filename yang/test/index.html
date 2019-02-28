@@ -6,8 +6,7 @@
   <title>Living Conditions of Amsterdam</title>
     <script src="d3/d3.min.js" charset="utf-8"></script>
     <script src="jquery-3.3.1.min.js" charset="utf-8"></script>
-    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script> -->
-    
+        
 </head>
 <body>
     <h1>Living Conditions of Amsterdam</h1>
@@ -19,14 +18,13 @@
     <button type="button" id="down" onclick="pYear()">Show previous year</button>
     <button type="button" id="up" onclick="nYear()">Show next year</button>
 
-
     <div id="divTop">
-        <div onclick="showOtherDiv()" title="score detail" style="border:1px solid #fff">click to show the detail</div>
+        <div id="mapBlock" onclick="showOtherDiv()" title="score detail" style="border:1px solid #fff">click to show the detail
+            <div id="scoreDetails">Score:100, Safty:100, Population:100, Environment:100</div>
+        </div>
         <div id="otherDiv" class="otherDivClose" style="display:none;border:1px solid red">this is detail, click other area to hide</div>
     </div>
-
-
-
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
 
     <p>Information Visualization: Group 11</p>
 </body>
