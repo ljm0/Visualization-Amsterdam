@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Living Conditions of Amsterdam</title>
+    <script src="d3/d3.min.js" charset="utf-8"></script>
+    <script src="jquery-3.3.1.min.js" charset="utf-8"></script>
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script> -->
+    
+</head>
+<body>
+    <h1>Living Conditions of Amsterdam</h1>
+    <script type="text/javascript" src="js/frame.js"></script>
+    <!-- button control year change -->
+    <p>
+        <span>Year </span><span id="yearFlag">2017</span>
+    </p>
+    <button type="button" id="down" onclick="pYear()">Show previous year</button>
+    <button type="button" id="up" onclick="nYear()">Show next year</button>
+
+
+    <div id="divTop">
+        <div onclick="showOtherDiv()" title="score detail" style="border:1px solid #fff">click to show the detail</div>
+        <div id="otherDiv" class="otherDivClose" style="display:none;border:1px solid red">this is detail, click other area to hide</div>
+    </div>
+
+
+
+
+    <p>Information Visualization: Group 11</p>
+</body>
