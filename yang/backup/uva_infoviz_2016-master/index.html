@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test</title>
+    <!--Import Style Sheet-->
+    <link rel='stylesheet' href='css/dashboard.css' type='text/css'></style> 
+    <!--Bootstrap CSS-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!--Import D3-->
+    <script type="text/javascript" src="https://d3js.org/d3.v3.js"></script>
+    <!--Import D3 queue-->
+    <script type="text/javascript" src="https://d3js.org/queue.v1.min.js"></script>
+    <!--Import jQuery-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+    <!--Import Bootstrap Javascript-->
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">></script>
+    <!--Import D3 topoJSON-->
+    <script type="text/javascript" src="https://d3js.org/topojson.v1.min.js"></script>
+    <!--Import GOOGLE Maps-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <!--Import D3 Tooltip CREDIT ELSEWHERE (Copyright (c) 2013 Justin Palmer)-->
+    <script type="text/javascript" src="js/d3tip.js"></script>
+
+  </head>
+  <body>
+    
+    <div class="container">    
+        <header>
+            <h1>Information Visualization: Course Project</h1>
+        </header>
+    </div>
+
+    <div class="container-fluid">
+            <section id="mapping" class="tab-pane active">
+                <div class="container">
+                    <h3>Amsterdam Map</h3>
+                    <p>
+                        <strong>The Map</strong> below shows neighborhood groups colored by the average building value, selected from the dropdown. 
+                    </p>
+                    <div id="dropdowns">
+                        <select id="color_map">
+                            <option value="predicted" selected>Predicted</option>
+                            <option value="avg_building_year">Building Year</option>
+                            <option value="avg_square_meters">Square Meters</option>
+                            <option value="avg_home_occupancy">Home Occupancy</option>
+                            <option value="avg_home_size_rooms">Number of Rooms</option>
+                            <option value="average_property_value">Property Value</option>
+                            <option value="avg_length_residence_years">Length of Stay</option>
+                            <option value="avg_disp_income_ink">Disposable Income</option>
+                        </select>
+                    </div>                        
+                    <div id="map_legend" class="legend"></div>
+                    <!--Google Map Goes Here-->
+                    <div id="map"></div>
+            </section>
+            
+            <footer>
+                <div id="foot" class="container">
+                    <!-- <p class="text-muted">
+                        <i>Group11</i>
+                    </p> -->
+                    <p>Group11</p>
+                    <p><b>Author</b>:J.L, X.Y</p>
+                    <p><a href="https://github.com/negi-saurabh/InfoVis">Code</a></p>
+                </div>
+            </footer>
+    </div>
+    </div>
+
+    <script>
+        $.getScript("js/map.js");
+    </script>
+
+  </body>
+</html>
