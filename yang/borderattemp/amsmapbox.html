@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<title>MapboxGL & D3.js - dpolygon</title>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
+<style>
+    
+html, body, #wrapper {
+    width: 100%;
+    height: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+#map { 
+  position:relative; 
+  width: 100%;
+  height: 100%;
+  margin: auto auto;
+}
+svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.hidden {
+	display: none;
+}
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="map"></div>    
+</div>    
+
+<script src='//unpkg.com/d3@5.0.0/dist/d3.min.js'></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
+<script>
+d3.json("map.geojson").then(mapDraw);
+    
+    
+function mapDraw(geojson){    
+
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2hpbWl6dSIsImEiOiJjam95MDBhamYxMjA1M2tyemk2aHMwenp5In0.i2kMIJulhyPLwp3jiLlpsA'
+        
+    var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/mapbox/streets-v8',
+        center: [4.9, 52.366667],
+        zoom: 12,  
+    })
+    
+    map.addControl(new mapboxgl.NavigationControl());
+    
+    var container = map.getCanvasContainer()
+    var svg = d3.select(container).append("svg")
+
+
+	var transform = d3.geoTransform({point: projectPoint});
+	var path = d3.geoPath().projection(transform);
+    
+ 	var featureElement = svg.selectAll("path")
+		.data(geojson.features)
+		.enter()
+        .append("path")
+        .attr("stroke", "red")
+        .attr("fill", "green")
+        .attr("fill-opacity", 0.4)
+    
+    function update() {
+        featureElement.attr("d", path);
+    }
+    
+    map.on("viewreset", update)
+    map.on("movestart", function(){
+		svg.classed("hidden", true);
+	});	
+    map.on("rotate", function(){
+		svg.classed("hidden", true);
+	});	
+    map.on("moveend", function(){
+		update()
+		svg.classed("hidden", false);
+	})
+    
+
+    update()
+        
+    
+	function projectPoint(lon, lat) {
+        var point = map.project(new mapboxgl.LngLat(lon, lat));
+		this.stream.point(point.x, point.y);
+	}
+     
+    
+}
+
+    
+  </script>
+</body>
