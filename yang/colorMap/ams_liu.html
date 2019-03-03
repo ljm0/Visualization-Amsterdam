@@ -103,7 +103,7 @@
                 .style('cursor', 'pointer')
                 .on('mouseover', function (d) {
                     tooltip.style("opacity", 1)
-                .html(d.properties.district + '<br />'+ "living condition score: "+d.properties[currentKey] + '<br />'+ "safe score: "+d.properties[safe_currentKey])
+                .html(d.properties.district + '<br />'+ "living condition score: "+d.properties[currentKey] + '<br />'+ "safe score: "+d.properties[safe_keys[keys.indexOf(currentKey)]]+'<br />'+ "population stability score: "+d.properties[popu_keys[keys.indexOf(currentKey)]])
                         .style("left", (d3.event.pageX + 10) + "px")
                         .style("top", (d3.event.pageY - 40) + "px");
                     var self = d3.select(this);
@@ -141,13 +141,8 @@
                         return color(d.properties[currentKey]);
                     });
             }
-            // mapファイルを読み込んだ後にcsvファイルを読み込み
+
             d3.csv("score.csv", function (rows) {
-                // ken以外の項目名を取り出す
-                // keys = Object.keys(rows[0]).filter(function (key) {
-                //     return key !== 'district';
-                // });
-                console.log(rows.district);
                 keys =['living_condition_score_2014','living_condition_score_2015','living_condition_score_2016','living_condition_score_2017'];
                 safe_keys = ['safety_index_2014','safety_index_2015','safety_index_2016','safety_index_2017'];
                 popu_keys =['population_stability_score_2014','population_stability_score_2015','population_stability_score_2016','population_stability_score_2017'];
@@ -166,26 +161,23 @@
                     .attr('font-size', 10)
                     .style('cursor', 'pointer')
                     .text(function (d) {
-                        return d + 'year';
+                        return d + ' year';
                     })
                     .on('click', clickKey);
 
-                // // 人口超過データを追加する
-                for (var i = 0; i < rows.length; i++) {
-                    var municipality = json.features.filter(function (obj) {
-                        return (obj.properties['district'] === rows[i]['district']);
-                    })[0];
-                    console.log('municipality', i, municipality, rows[i]);
+                // for (var i = 0; i < rows.length; i++) {
+                //     var municipality = json.features.filter(function (obj) {
+                //         return (obj.properties['district'] === rows[i]['district']);
+                //     })[0];
+                //     console.log('municipality', i, municipality, rows[i]);
 
-                    if (municipality) {
-                        // 各項目の数値を、pathのpropertiesに代入する
-                        keys.forEach(function (key) {
-                            municipality.properties[key] = rows[i][key];
-                        });
-                    }
-                }
+                //     if (municipality) {
+                //         keys.forEach(function (key) {
+                //             municipality.properties[key] = rows[i][key];
+                //         });
+                //     }
+                // }
 
-                // // データを読み込んだので、現在の項目名を最初の項目名にして、マップの色を更新
                 currentKey = keys[0];
                 safe_currentKey = safe_keys[0];
                 popu_currentKey = popu_keys[0];
