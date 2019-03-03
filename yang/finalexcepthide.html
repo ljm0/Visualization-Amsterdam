@@ -5,12 +5,12 @@
 <title>IV Group11</title>
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
 <style>
-html, body, #wrapper {
+/* html, body, #wrapper {
     width: 100%;
     height: 100%;
 	padding: 0px;
 	margin: 0px;
-}
+} */
 #map { 
   position:relative; 
   width: 1000px;
@@ -49,7 +49,7 @@ svg {
 </div>
 
 <div id="divTop">
-    <div id="otherDiv" class="otherDivClose" style="display:none;border:1px solid red">Show subgraph there</div>
+    <div id="otherDiv" class="otherDivClose" style="display:none;border:1px solid red">Show subgraph there <span id="subgraphFlag">Empty</span></div>
 </div>    
 
 <script src="//d3js.org/d3.v5.js"></script>
@@ -149,18 +149,12 @@ d3.json("map.geojson").then(mapDraw);
             .on('click', function (d, i) {
                 var self = d3.select(this);
                 self.style('fill', 'black')
-                    .attr('id',d.properties['district']+year);
-                
-                a=d.properties['district']+year;
+                    .attr('id',d.properties['district']+year);                
+                a='#'+d.properties['district']+year;
                 console.log(a);
                 var  otherDiv=document.getElementById('otherDiv');//get the objcet to be shown
                 otherDiv.style.display="block";//show
-                // $(document).click(function(event){
-                // var _con = $(#a);  // for unhide area
-                //     if(!_con.is(event.target) && _con.has(event.target).length === 0){
-                //         $('#otherDiv').hide(300);
-                //     }
-                // });
+                document.getElementById("subgraphFlag").innerHTML=a;
             });
     }
     
@@ -203,15 +197,15 @@ d3.json("map.geojson").then(mapDraw);
 
     mapVis(map,year);
     }
-
+    // b=document.getElementById("subgraphFlag").innerHTML;
+    // c= '#'+b;
+    // console.log(b);
     // $(document).click(function(event){
     //     var _con = $('#divTop');  // for unhide area
     //     if(!_con.is(event.target) && _con.has(event.target).length === 0){
     //         $('#otherDiv').hide(300);
     //     }
-    // });
-
-    
+    // });//hide subgraph    
 
   </script>
 </body>
