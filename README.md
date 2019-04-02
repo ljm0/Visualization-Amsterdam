@@ -2,6 +2,7 @@
 
 # Deloy
 https://ljm250.github.io/Visualization-Amsterdam/
+![avatar](Amsterdam.png)
 
 # Get start
 - python -m http.server 8888
