@@ -12,7 +12,7 @@ https://ljm250.github.io/Visualization-Amsterdam/
 - python -m http.server 8888
 - open your browser: http://localhost:8888/
 
-# Score
+# How do we compute the Score?
 ### Population Stability Score
 - higher score means better population stability
 - PopulationStabilityScore = {[Normalized[min:0,max:1]:(people working/population)]*100} + {[Normalized[min:0,max:1]:(people moving to/people moving away)]*100}
