@@ -1,7 +1,7 @@
 # Information Visualization - Team 11
 
 # Deloy
-https://ljm250.github.io/Visualization-Amsterdam/
+https://ljm0.github.io/Visualization-Amsterdam/
 ![avatar](Amsterdam.png)
 
 # Abstract
