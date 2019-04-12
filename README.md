@@ -5,6 +5,7 @@ https://ljm0.github.io/Visualization-Amsterdam/
 ![avatar](Amsterdam.png)
 
 # Abstract
+### Where is the ideal district to live in Amsterdam?
 - The visualization project on D3.js aims to help the users to find an ideal district to live in the Amsterdam. The final visualization presents an outlook on the living condition of each district based on living condition score on the map. The living condition score is the combination of Population Stability Score and Safety Score.
 - We have used four sub graphs to give more detailed information based on multiple view design, which includes Bubble chart for safety, Bar chart for population, Line chart for correlation and Panoramic Graph to get an panoramic overview of the place.
 
