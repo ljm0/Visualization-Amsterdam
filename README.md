@@ -4,7 +4,7 @@
 https://ljm0.github.io/Visualization-Amsterdam/
 ![avatar](Amsterdam.png)
 
-- (Panoramic Graph is unavailable because the link is overdue)
+- Panoramic Graph is unavailable because the links are overdue
 
 # Abstract
 ### Where is the ideal district to live in Amsterdam?
